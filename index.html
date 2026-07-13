@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[First] [Last] — Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     HOW TO USE THIS TEMPLATE
+     1. Replace every [BRACKETED] placeholder with your info.
+     2. Replace each ".photo-slot" box: swap the <div class="photo-slot">
+        for an <img src="your-photo.jpg" alt="..."> once you have real
+        project photos. Keep the same class for sizing/border to match.
+     3. Duplicate a whole <section class="sheet"> block to add a 4th
+        project if you need one.
+     4. To host it for free: create a GitHub repo, add this file as
+        index.html, then enable GitHub Pages in repo Settings — you'll
+        get a shareable link in a couple minutes.
+     ============================================================ */
+
+  :root{
+    --navy: #14283f;
+    --navy-deep: #0e1d30;
+    --line: #5f92b8;
+    --line-dim: rgba(95,146,184,0.35);
+    --paper: #edeade;
+    --paper-dim: #e2ded0;
+    --ink: #1b2430;
+    --ink-soft: #4a5568;
+    --amber: #e3a72e;
+    --red: #c1443b;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, var(--line-dim) 0px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, var(--line-dim) 0px, transparent 1px, transparent 40px),
+      var(--navy);
+    color: var(--paper);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.55;
+  }
+
+  a{ color: inherit; }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position: sticky; top:0; z-index: 50;
+    display:flex; align-items:center; justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(14,29,48,0.88);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line-dim);
+  }
+  .nav-mark{
+    font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:.12em;
+    color: var(--amber); text-transform:uppercase;
+  }
+  .nav-links{ display:flex; gap: 28px; }
+  .nav-links a{
+    font-family:'IBM Plex Mono'; font-size:13px; text-decoration:none;
+    color: var(--paper); opacity:.75; letter-spacing:.04em;
+  }
+  .nav-links a:hover{ opacity:1; color: var(--amber); }
+
+  /* ---------- Hero / cover sheet ---------- */
+  .cover{
+    padding: 14vh 6vw 10vh;
+    max-width: 1100px; margin: 0 auto;
+    position: relative;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:.18em;
+    color: var(--line); text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:''; width:28px; height:1px; background: var(--line);
+  }
+  h1.name{
+    font-family:'Space Grotesk'; font-weight:700;
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    margin: 0 0 20px; line-height:1.05; letter-spacing:-0.01em;
+  }
+  .tagline{
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--paper); opacity:.85;
+    max-width: 640px; margin: 0 0 40px;
+  }
+  .cover-meta{
+    display:flex; flex-wrap:wrap; gap: 28px 40px;
+    font-family:'IBM Plex Mono'; font-size: 13px; color: var(--line);
+  }
+  .cover-meta div span{ display:block; color: var(--paper); opacity:.9; margin-top:4px; font-family:'Inter'; }
+
+  /* ---------- Section shell ---------- */
+  .section-wrap{ max-width: 1100px; margin: 0 auto; padding: 6vh 6vw; }
+  .section-label{
+    font-family:'IBM Plex Mono'; font-size:13px; letter-spacing:.18em;
+    color: var(--amber); text-transform:uppercase; margin-bottom: 14px;
+  }
+  h2.section-title{
+    font-family:'Space Grotesk'; font-weight:600; font-size: clamp(1.6rem,3vw,2.2rem);
+    margin: 0 0 28px;
+  }
+
+  /* ---------- About ---------- */
+  .about-text{ max-width: 720px; font-size: 1.05rem; color: var(--paper); opacity:.9; }
+  .about-text p{ margin: 0 0 16px; }
+
+  /* ---------- Project sheets ---------- */
+  .sheet{
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 2px;
+    margin-bottom: 48px;
+    position: relative;
+    box-shadow: 0 20px 50px -20px rgba(0,0,0,0.5);
+  }
+  .sheet::before{ /* corner tick marks, like a drafting sheet */
+    content:''; position:absolute; inset: 10px;
+    border: 1px solid rgba(27,36,48,0.15);
+    pointer-events:none;
+  }
+  .titleblock{
+    display:flex; flex-wrap:wrap; gap: 0;
+    border-bottom: 2px solid var(--ink);
+    font-family:'IBM Plex Mono';
+  }
+  .titleblock .field{
+    flex: 1 1 140px;
+    padding: 14px 18px;
+    border-right: 1px solid rgba(27,36,48,0.18);
+  }
+  .titleblock .field:last-child{ border-right:none; }
+  .titleblock .field label{
+    display:block; font-size: 10px; letter-spacing:.12em; text-transform:uppercase;
+    color: var(--ink-soft); margin-bottom: 5px;
+  }
+  .titleblock .field strong{ font-size: 13px; font-weight:600; }
+
+  .sheet-body{ padding: 34px 30px 38px; display:grid; grid-template-columns: 1.1fr 1fr; gap: 34px; }
+  @media (max-width: 760px){ .sheet-body{ grid-template-columns: 1fr; } }
+
+  .photo-slot{
+    aspect-ratio: 4/3;
+    border: 2px dashed rgba(27,36,48,0.3);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-family:'IBM Plex Mono'; font-size: 12px; color: var(--ink-soft);
+    padding: 20px; background: repeating-linear-gradient(135deg, rgba(27,36,48,0.03) 0 10px, transparent 10px 20px);
+  }
+  .sheet-copy h3{
+    font-family:'Space Grotesk'; font-size: 1.4rem; margin: 0 0 12px;
+  }
+  .sheet-copy p{ margin: 0 0 14px; color: var(--ink-soft); font-size: .97rem; }
+  .sheet-copy ul{ margin: 0 0 16px; padding-left: 18px; color: var(--ink-soft); font-size: .95rem; }
+  .sheet-copy li{ margin-bottom: 6px; }
+
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 6px; }
+  .tag{
+    font-family:'IBM Plex Mono'; font-size: 11px; letter-spacing:.04em;
+    padding: 4px 9px; border: 1px solid rgba(27,36,48,0.25); border-radius: 2px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Skills / BOM table ---------- */
+  .bom{ width:100%; border-collapse: collapse; font-family:'IBM Plex Mono'; font-size: 13px; }
+  .bom th{
+    text-align:left; padding: 10px 14px; border-bottom: 2px solid var(--line);
+    color: var(--amber); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+  }
+  .bom td{ padding: 12px 14px; border-bottom: 1px solid var(--line-dim); color: var(--paper); opacity:.9; }
+  .bom tr:hover td{ opacity:1; background: rgba(95,146,184,0.06); }
+  .bom .idx{ color: var(--line); }
+
+  /* ---------- Footer / contact title block ---------- */
+  footer{ border-top: 1px solid var(--line-dim); margin-top: 60px; }
+  .contact-block{
+    max-width: 1100px; margin:0 auto; padding: 7vh 6vw;
+    display:flex; flex-wrap:wrap; justify-content: space-between; gap: 30px;
+  }
+  .contact-block h2{
+    font-family:'Space Grotesk'; font-size: clamp(1.6rem,3.4vw,2.4rem); margin:0; max-width:480px;
+  }
+  .contact-links{ display:flex; flex-direction:column; gap:10px; font-family:'IBM Plex Mono'; font-size: 14px; }
+  .contact-links a{ text-decoration:none; color: var(--amber); }
+  .rev-note{
+    font-family:'IBM Plex Mono'; font-size: 11px; color: var(--line);
+    text-align:center; padding: 18px 6vw 40px; opacity:.7;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark">[FIRST] [LAST] // ENGINEERING</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#h2gp">H2GP</a>
+    <a href="#vex">VEX Robotics</a>
+    <a href="#marble">Marble Project</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ COVER ============ -->
+<header class="cover">
+  <div class="eyebrow">Engineering Portfolio — Sacramento, CA</div>
+  <h1 class="name">[First] [Last]</h1>
+  <p class="tagline">
+    High school engineer building hardware that races, competes, and solves real
+    problems — robotics, hydrogen fuel-cell racing, and embedded systems.
+  </p>
+  <div class="cover-meta">
+    <div>SCHOOL <span>Florin High School</span></div>
+    <div>TRACK <span>Engineering Pathway</span></div>
+    <div>GPA <span>4.2 (Weighted)</span></div>
+    <div>GRAD <span>2027</span></div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section class="section-wrap" id="about">
+  <div class="section-label">01 — About</div>
+  <h2 class="section-title">What I work on</h2>
+  <div class="about-text">
+    <p>
+      [1–2 sentences on who you are and what draws you to engineering — e.g. what
+      got you into robotics, or what you want to build next. Keep it short and
+      specific, not generic.]
+    </p>
+    <p>
+      Outside the classroom I split my time between two hands-on teams: leading
+      the hardware side of our VEX Robotics build, and working pit crew and
+      telemetry on our H2GP hydrogen fuel-cell race car. Both have taught me as
+      much about troubleshooting under pressure as they have about CAD or code.
+    </p>
+  </div>
+</section>
+
+<!-- ============ PROJECT: H2GP ============ -->
+<section class="section-wrap" id="h2gp">
+  <div class="section-label">02 — Project Sheet</div>
+  <article class="sheet">
+    <div class="titleblock">
+      <div class="field"><label>Sheet</label><strong>01 of 03</strong></div>
+      <div class="field"><label>Project</label><strong>H2GP Hydrogen Racing</strong></div>
+      <div class="field"><label>Role</label><strong>State Competitor, Pit Crew</strong></div>
+      <div class="field"><label>Date</label><strong>Aug 2025 – Present</strong></div>
+      <div class="field"><label>Team Size</label><strong>4 Students</strong></div>
+    </div>
+    <div class="sheet-body">
+      <div class="photo-slot">
+        [ ADD PHOTO OR VIDEO ]<br>e.g. the race car, pit crew in action, or telemetry dashboard
+      </div>
+      <div class="sheet-copy">
+        <h3>Hydrogen fuel-cell RC race vehicle</h3>
+        <p>
+          [Rewrite in your own voice: what the car does, what your specific
+          contribution was, and one concrete detail — a design decision, a
+          problem you solved, or a number.]
+        </p>
+        <ul>
+          <li>Competed at the state level; helped the team place 3rd at regionals.</li>
+          <li>Monitored and interpreted telemetry data to inform race strategy.</li>
+          <li>Serviced the vehicle as pit crew under competition time pressure.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Hydrogen Fuel Cells</span>
+          <span class="tag">Telemetry</span>
+          <span class="tag">Clean Energy</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============ PROJECT: VEX ROBOTICS ============ -->
+<section class="section-wrap" id="vex">
+  <div class="section-label">02 — Project Sheet</div>
+  <article class="sheet">
+    <div class="titleblock">
+      <div class="field"><label>Sheet</label><strong>02 of 03</strong></div>
+      <div class="field"><label>Project</label><strong>VEX Robotics Competition</strong></div>
+      <div class="field"><label>Role</label><strong>Builder, Team Leader</strong></div>
+      <div class="field"><label>Date</label><strong>Aug 2025 – Present</strong></div>
+      <div class="field"><label>Result</label><strong>Rank 28 → 13</strong></div>
+    </div>
+    <div class="sheet-body">
+      <div class="photo-slot">
+        [ ADD PHOTO OR VIDEO ]<br>e.g. the robot, drivetrain close-up, or a competition photo
+      </div>
+      <div class="sheet-copy">
+        <h3>Competition robot — drivetrain, intake & outtake</h3>
+        <p>
+          [Rewrite in your own voice: describe one hardware decision you're
+          proud of — why you designed it that way, what you iterated on, and
+          what changed as a result.]
+        </p>
+        <ul>
+          <li>Led the hardware side as builder and group leader for a 4-student team.</li>
+          <li>Designed and assembled the drivetrain, intake, and outtake systems.</li>
+          <li>Iterative hardware redesign helped move the team from 28th to 13th place.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">ROBOTC</span>
+          <span class="tag">Mechanical Design</span>
+          <span class="tag">Troubleshooting</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============ PROJECT: MARBLE PROJECT ============ -->
+<section class="section-wrap" id="marble">
+  <div class="section-label">02 — Project Sheet</div>
+  <article class="sheet">
+    <div class="titleblock">
+      <div class="field"><label>Sheet</label><strong>03 of 03</strong></div>
+      <div class="field"><label>Project</label><strong>VEX Marble Project</strong></div>
+      <div class="field"><label>Role</label><strong>Builder, Programmer, Lead</strong></div>
+      <div class="field"><label>Date</label><strong>2025</strong></div>
+    </div>
+    <div class="sheet-body">
+      <div class="photo-slot">
+        [ ADD PHOTO OR VIDEO ]<br>e.g. the finished mechanism, or a clip of it running
+      </div>
+      <div class="sheet-copy">
+        <h3>Marble-sorting mechanism — design, build & code</h3>
+        <p>
+          [Rewrite in your own voice: what the mechanism does end-to-end, and
+          what made it tricky — this is a good spot to talk about the coding
+          side since you owned that too.]
+        </p>
+        <ul>
+          <li>Designed, assembled, coded, and tested the project end-to-end.</li>
+          <li>Led project planning and iterative improvements to reliability.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">ROBOTC</span>
+          <span class="tag">Programming</span>
+          <span class="tag">Iterative Design</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ============ SKILLS (BOM table) ============ -->
+<section class="section-wrap" id="skills">
+  <div class="section-label">03 — Bill of Materials</div>
+  <h2 class="section-title">Skills & tools</h2>
+  <table class="bom">
+    <thead>
+      <tr><th>No.</th><th>Skill</th><th>Category</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="idx">01</td><td>Arduino IDE</td><td>Embedded Systems</td></tr>
+      <tr><td class="idx">02</td><td>ROBOTC (VEX Robotics)</td><td>Programming</td></tr>
+      <tr><td class="idx">03</td><td>Telemetry Monitoring & Data Analysis</td><td>Data</td></tr>
+      <tr><td class="idx">04</td><td>Electronics & Hardware Integration</td><td>Electrical</td></tr>
+      <tr><td class="idx">05</td><td>Technical Troubleshooting</td><td>Mechanical</td></tr>
+      <tr><td class="idx">06</td><td>Beginner CAD</td><td>Mechanical</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<footer id="contact">
+  <div class="contact-block">
+    <h2>Let's build<br>something together.</h2>
+    <div class="contact-links">
+      <a href="mailto:email@gmail.com">email@gmail.com</a>
+      <a href="tel:+19165555555">(916) 555-5555</a>
+      <span style="color:var(--line);">Sacramento, CA</span>
+    </div>
+  </div>
+  <div class="rev-note">SHEET REV. 001 — LAST UPDATED [MONTH YYYY]</div>
+</footer>
+
+</body>
+</html>
