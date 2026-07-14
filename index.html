@@ -315,21 +315,35 @@
 
 <!-- ============ PROJECT: MARBLE PROJECT ============ -->
 <section class="section-wrap" id="marble">
-  <div class="titleblock">
-  <div class="field"><label>Sheet</label><strong>03 of 03</strong></div>
-  <div class="field"><label>Project</label><strong>VEX Marble Project</strong></div>
-  <div class="field"><label>Role</label><strong>Builder, Programmer, Lead</strong></div>
-  <div class="field"><label>Date</label><strong>2026</strong></div>
-  <div class="field"><label>Result</label><strong>16/16 Score</strong></div>
-</div>
+  <div class="section-label">02 — Project Sheet</div>
+  <article class="sheet">
+    <div class="titleblock">
+      <div class="field"><label>Sheet</label><strong>03 of 03</strong></div>
+      <div class="field"><label>Project</label><strong>VEX Marble Project</strong></div>
+      <div class="field"><label>Role</label><strong>Builder, Programmer, Lead</strong></div>
+      <div class="field"><label>Date</label><strong>2026</strong></div>
+      <div class="field"><label>Result</label><strong>16/16 Score</strong></div>
+    </div>
     <div class="sheet-body">
       <video src="Marble-Project.mp4" controls style="width:100%;height:100%;object-fit:cover;"></video>
       <div class="sheet-copy">
         <h3>Marble-sorting mechanism — design, build & code</h3>
         <p>
-          [Rewrite in your own voice: what the mechanism does end-to-end, and
-          what made it tricky — this is a good spot to talk about the coding
-          side since you owned that too.]
+          This project sorted 4 different types of marbles across 16 total
+          marbles, using only VEX-legal hardware — servos, motors, and
+          sensors. The hardest part was that sensor readings weren't
+          consistent in practice; light and other real-world conditions
+          made the values for each marble type drift unpredictably, so I
+          couldn't rely on fixed thresholds. I solved part of this on the
+          hardware side by building an enclosure over the sensor to block
+          outside light from skewing readings, and part of it in code —
+          writing conditional logic in ROBOTC with boolean checks and AND
+          operators to build in tolerance for that variation instead of
+          expecting exact values. I also designed a seesaw mechanism that
+          separated one marble type by weight alone, which meant the sensor
+          only had to actively distinguish between the remaining three
+          types. The final system scored a perfect 16/16 on the grading
+          rubric.
         </p>
         <ul>
           <li>Designed, assembled, coded, and tested the project end-to-end.</li>
@@ -338,7 +352,7 @@
         <div class="tag-row">
           <span class="tag">ROBOTC</span>
           <span class="tag">Programming</span>
-          <span class="tag">Iterative Design</span>
+          <span class="tag">Sensor Calibration</span>
         </div>
       </div>
     </div>
